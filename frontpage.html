@@ -1,19 +1,20 @@
 <html>
     <head>
         <title>Calculator Assignment</title>
+        <script type="text/javascript" src="backcalc.js"></script>
         <style>
                 *
                 {
                     font-family: sans-serif,"Times New Roman";
                 }
-                /* Hide input arrows for input box in chrome*/
+                /* Hide input spinner arrows for input box in chrome*/
                 input::-webkit-outer-spin-button,
                 input::-webkit-inner-spin-button 
                 {
                     -webkit-appearance: none;
                     margin: 0;
                 }
-                /* Hide input arrows for input box in Firefox*/
+                /* Hide input spinner arrows for input box in Firefox*/
                 input[type=number] { 
                     -moz-appearance:textfield; 
                 } 
@@ -29,28 +30,28 @@
 
         <p>Bill</p>
         <br>
-        <input type="number">
+        <input type="number" id="bill-input" placeholder="Enter Total Bill here">
 
         <br>
 
         <p>Tip %</p>
         <button type="button">-</button>
-        <input type="number" class="no-arrows" value="0">
+        <input type="number" id="tip-input" placeholder="Enter Tip % here">
         <button type="button">+</button>
 
         <br>
 
         <p>Number of people</p>
         <button type="button">-</button>
-        <input type="number" value="1">
+        <input type="number" id="people-input" placeholder="Enter no. of people here">
         <button type="button">+</button>
 
         </td>
 
         <td>
-            <p style="margin-left: 150px">Tip per person<span style="margin-left: 50px;">$0</span></p>
+            <p style="margin-left: 150px">Tip per person<span style="margin-left: 50px;">$<span id="finaltip"></span></span></p>
             <br>
-            <p style="margin-left: 150px">Total per person<span style="margin-left: 50px;">$0</span></p>
+            <p style="margin-left: 150px">Total per person<span style="margin-left: 50px;">$<span id="finaltotal"></span></span></p>
             
             
         </td>
@@ -58,6 +59,10 @@
 
         </tr>
         </table>
+        <br>
+        <button onclick="calculate()" style="text-align: center; font-size: 25px; display: block; margin: 0 auto;">Calculate</button>
+
+        
 
     </body>
 
