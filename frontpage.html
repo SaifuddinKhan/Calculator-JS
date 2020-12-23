@@ -1,71 +1,101 @@
-<html>
-    <head>
-        <title>Calculator Assignment</title>
-        <script type="text/javascript" src="backcalc.js"></script>
-        <style>
-                *
-                {
-                    font-family: sans-serif,"Times New Roman";
-                }
-                /* Hide input spinner arrows for input box in chrome*/
-                input::-webkit-outer-spin-button,
-                input::-webkit-inner-spin-button 
-                {
-                    -webkit-appearance: none;
-                    margin: 0;
-                }
-                /* Hide input spinner arrows for input box in Firefox*/
-                input[type=number] { 
-                    -moz-appearance:textfield; 
-                } 
-        </style>
-    </head>
+<!DOCTYPE html>
+<html lang="en">
 
-    <body>
+<head>
+  <meta charset="UTF-8">
+  <title>Calculator Assignment</title>
+  <script src="backcalc.js"></script>
+  <!--external js file-->
+  <style>
+    * {
+      /*specifies font for all elements*/
+      font-family: sans-serif, "Times New Roman";
+    }
 
-        <table style="margin-left: auto;
-        margin-right: auto; margin-top: 10% ;border: 1px solid; padding: 50px;">
-        <tr>
-        <td>
+    .tableFormat {
+      /*specifies css style for table*/
+      margin-left: auto;
+      margin-right: auto;
+      margin-top: 10%;
+      border: 1px solid;
+      padding: 50px;
+    }
+
+    .buttonStyle {
+      text-align: center;
+      font-size: 15px;
+      display: block;
+      margin: 0 auto;
+    }
+
+    .errorStyle {
+      color: red;
+      text-align: center;
+    }
+
+    /* Hide input spinner arrows for input box in chrome*/
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+
+    /* Hide input spinner arrows for input box in Firefox*/
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+  </style>
+</head>
+
+<body>
+  <!--the UI is made from a table with 1 row and 2 columns (one for input and output secton each)-->
+  <table class="tableFormat">
+    <tr>
+      <td>
 
         <p>Bill</p>
         <br>
-        <input type="number" min='0' id="bill-input" placeholder="Enter Total Bill here">
+        <input step="0.01" min='0' id="billInput" placeholder="Enter Total Bill here">
 
         <br>
 
         <p>Tip %</p>
-        <button onclick="tipminus()" type="button">-</button>
-        <input type="number" min='0' id="tip-input" value='10'>
-        <button onclick="tipplus()" type="button">+</button>
+        <!--calls js method to change tip on pressing + or - button-->
+        <button onclick="tipMinus()" type="button">-</button>
+        <input min='0' step="0.01" id="tipInput" value='10'>
+        <button onclick="tipPlus()" type="button">+</button>
 
         <br>
 
         <p>Number of people</p>
-        <button onclick="peopleminus()" type="button">-</button>
-        <input type="number" min='0' id="people-input" placeholder="Enter no. of people here">
-        <button onclick="peopleplus()" type="button">+</button>
+        <!--calls js method to change no. of ppl on pressing + or - button-->
+        <button onclick="peopleMinus()" type="button">-</button>
+        <input min='0' id="peopleInput" placeholder="Enter no. of people here">
+        <button onclick="peoplePlus()" type="button">+</button>
 
-        </td>
+      </td>
 
-        <td>
-            <p style="margin-left: 100px">Tip per person<span style="margin-left: 50px;">$<span id="finaltip">0.00</span></span></p>
-            <br>
-            <p style="margin-left: 100px">Total per person<span style="margin-left: 50px;">$<span id="finaltotal">0.00</span></span></p>
-            
-            
-        </td>
-
-        </tr>
-        </table>
+      <td>
+        <p style="margin-left: 100px">Tip per person<span style="margin-left: 50px;">$<span
+              id="finalTip">0.00</span></span></p>
         <br>
-        <button onclick="calculate()" style="text-align: center; font-size: 25px; display: block; margin: 0 auto;">Calculate</button>
-        <br>
-        <button onclick="reset()" style="text-align: center; font-size: 15px; display: block; margin: 0 auto;">Reset</button>
-        <br>
-        <p id="error-show"></p>
-        
+        <p style="margin-left: 100px">Total per person<span style="margin-left: 50px;">$<span
+              id="finalTotal">0.00</span></span></p>
 
-    </body>
+
+      </td>
+
+    </tr>
+  </table>
+  <br>
+  <!--calls the js method to find output and display it in the UI-->
+  <button onclick="calculate()" class="buttonStyle">Calculate</button>
+  <br>
+  <!--calls the js method to clear both the input and output-->
+  <button onclick="resetAll()" class="buttonStyle">Reset</button>
+  <br>
+  <!--paragraph below displays the invalid input error messages from JS-->
+  <p id="errorShow" class="errorStyle"></p>
+</body>
 
 </html>
