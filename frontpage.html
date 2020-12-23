@@ -30,38 +30,40 @@
 
         <p>Bill</p>
         <br>
-        <input type="number" id="bill-input" placeholder="Enter Total Bill here">
+        <input type="number" min='0' id="bill-input" placeholder="Enter Total Bill here">
 
         <br>
 
         <p>Tip %</p>
-        <button type="button">-</button>
-        <input type="number" id="tip-input" placeholder="Enter Tip % here">
-        <button type="button">+</button>
+        <button onclick="tipminus()" type="button">-</button>
+        <input type="number" min='0' id="tip-input" value='10'>
+        <button onclick="tipplus()" type="button">+</button>
 
         <br>
 
         <p>Number of people</p>
-        <button type="button">-</button>
-        <input type="number" id="people-input" placeholder="Enter no. of people here">
-        <button type="button">+</button>
+        <button onclick="peopleminus()" type="button">-</button>
+        <input type="number" min='0' id="people-input" placeholder="Enter no. of people here">
+        <button onclick="peopleplus()" type="button">+</button>
 
         </td>
 
         <td>
-            <p style="margin-left: 150px">Tip per person<span style="margin-left: 50px;">$<span id="finaltip"></span></span></p>
+            <p style="margin-left: 100px">Tip per person<span style="margin-left: 50px;">$<span id="finaltip">0.00</span></span></p>
             <br>
-            <p style="margin-left: 150px">Total per person<span style="margin-left: 50px;">$<span id="finaltotal"></span></span></p>
+            <p style="margin-left: 100px">Total per person<span style="margin-left: 50px;">$<span id="finaltotal">0.00</span></span></p>
             
             
         </td>
-
 
         </tr>
         </table>
         <br>
         <button onclick="calculate()" style="text-align: center; font-size: 25px; display: block; margin: 0 auto;">Calculate</button>
-
+        <br>
+        <button onclick="reset()" style="text-align: center; font-size: 15px; display: block; margin: 0 auto;">Reset</button>
+        <br>
+        <p id="error-show"></p>
         
 
     </body>
